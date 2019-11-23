@@ -1,0 +1,49 @@
+"""
+596. Classes More Than 5 Students
+
+There is a table courses with columns: student and class
+
+Please list out all classes which have more than or equal to 5 students.
+
+For example, the table:
+
++---------+------------+
+| student | class      |
++---------+------------+
+| A       | Math       |
+| B       | English    |
+| C       | Math       |
+| D       | Biology    |
+| E       | Math       |
+| F       | Computer   |
+| G       | Math       |
+| H       | Math       |
+| I       | Math       |
++---------+------------+
+Should output:
+
++---------+
+| class   |
++---------+
+| Math    |
++---------+
+ 
+
+Note:
+The students should not be counted duplicate in each course.
+"""
+# Write your MySQL query statement below
+SELECT class as class 
+FROM courses
+GROUP BY class
+HAVING COUNT(DISTINCT(STUDENT))>=5;
+
+# BECAUSE OF THE PRIORITY IN SQL IS:
+# FROM > ON > JOIN > WHERE > GROUP BY > WITH > HAVING > SELECT > DISTINCT > ORDER BY
+# For condition: it's WHERE and Having
+# We alrady use group by, so we can not use where here
+
+"""
+Runtime: 504 ms, faster than 8.15% of MySQL online submissions for Classes More Than 5 Students.
+
+"""
